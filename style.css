@@ -1,0 +1,25 @@
+#footer {
+    text-align: center;
+}
+
+#fotoInicio {
+    width:100%
+}
+
+.card.servicio {
+    margin: 5%;
+}
+
+.card.servicio img {
+    height: 50%;
+    width: auto;
+}
+
+.is-invalid {
+    background-color: rgb(255, 212, 215) !important;
+	border: 3px solid red !important;
+}
+
+.invalid-feedback {
+    color: #dc3546bd !important;
+}
