@@ -181,7 +181,6 @@
                         </div>
                     </form> 
                 </section>	
-
             </article>
 
     <!-- Footer -->
@@ -229,7 +228,7 @@
 				window.alert('Mensaje enviado. ¡Gracias por contactarte con nosotros!');
 
 				// Una vez que se envía y se recibe el mensaje, se limpia el formulario
-				limpiar(document.getElementById('formContacto'), document.getElementById('seccionContacto'));
+				$("#formContacto")[0].reset();
 			}
 
 			// Validación que se debe realizar cuando el usuario hace click en "Enviar"
@@ -388,6 +387,11 @@
 					$("#inputMensaje").removeClass("is-invalid");
 					
 				});
+
+
+
+
+            // EL TIEMPO
 
                 var diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 
