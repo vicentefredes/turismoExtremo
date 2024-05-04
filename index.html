@@ -111,9 +111,29 @@
             </article>
 
             <article id="tiempo" class="panel">
-                <h1>Consulta el Tiempo</h1>
-                <p>hola</p>
-                <button id="btnTiempo">Ver el tiempo</button>
+                <header>
+                    <h2>Consulta el tiempo:</h2>
+                    <p>Aquí podrás ver el tiempo a 10 días en el sector de Punta Arenas:</p>
+                </header>
+                <section id="seccionTiempo">
+
+                    <table class="table" id="tablaTiempo">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Condición</th>
+                                <th>Temp. mín. (°C)</th>
+                                <th>Temp. máx. (°C)</th>
+                                <th>Lluvia</th>
+                                <th>Viento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+                </section>
 
             </article>
 
@@ -369,27 +389,40 @@
 					
 				});
 
-                $("#btnTiempo").click(function() {
-					$.get("http://api.weatherapi.com/v1/forecast.json?key=c8171437ad2f4d1e807175311240305&q=Punta%20Arenas&days=10&aqi=no&alerts=no", function(data) { // Se obtiene la API
-						$.each(data.categories, function(i, item) { // Se itera por cada objeto del archivo
-							$("#categoriasComida").append( // Agregamos cards
-								`<div class="col-md-4">
-										<div class="card comida">
-											<img class="card-img-top" src="${item.strCategoryThumb}">
-											<div class="card-body">
-												<h5 class="card-title">${item.idCategory}. ${item.strCategory}</h5>
-												<br>
-												<p>${item.strCategoryDescription}</p>
-											</div>
-										</div>
-								</div>` 
-							);
-							$("#categoriasComida").show();
-						});
+                var diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 
-						ajustarParrafosComida(); // Debido a la variable longitud de las descripciones, llamamos a una función que ajuste los tamaños de fuente
+					$.get("http://api.weatherapi.com/v1/forecast.json?key=c8171437ad2f4d1e807175311240305&q=Punta%20Arenas&days=10&aqi=no&alerts=no", function(data) { // Se obtiene la API
+						$.each(data.forecast.forecastday, function(i, item) { // Se itera por cada objeto del archivo
+
+                            let icono = item.day.condition.icon;
+
+                            let fecha = new Date(item.date);
+
+                            let diaSemana = diasSemana[fecha.getDay()];
+                            let dia = fecha.getDate() + 1;
+                            let mes = fecha.toLocaleString('es', {month: 'long'})
+                            let mesCap = mes.charAt(0).toUpperCase() + mes.slice(1)
+                            let anio = fecha.getFullYear();
+
+
+							console.log(item.date);
+                            console.log(diaSemana + " " + dia  + " de " + mesCap + " de " + anio);
+                            console.log(item.day.mintemp_c);
+                            console.log(item.day.maxtemp_c);
+                            console.log('');
+
+                            let filaHTML = '<tr>';
+                            filaHTML += '<td>' + diaSemana + ', ' + dia + ' de ' + mesCap + ' de ' + anio + '</td>';
+                            filaHTML += `<td> <img src="${icono}" alt="condicion"> </td>`;
+                            filaHTML += '<td>' + item.day.mintemp_c + '°C</td>';
+                            filaHTML += '<td>' + item.day.maxtemp_c + '°C</td>';
+                            filaHTML += '<td>' + item.day.daily_chance_of_rain + '% prob.<br>' + item.day.totalprecip_mm + ' mm </td>';
+                            filaHTML += '<td>' + item.day.maxwind_kph + ' km/h </td>';
+                            filaHTML += '</tr>';
+
+                            $('#seccionTiempo tbody').append(filaHTML);
+						});
 					});
-				});
 
                 //http://api.weatherapi.com/v1/forecast.json?key=c8171437ad2f4d1e807175311240305&q=Punta%20Arenas&days=10&aqi=no&alerts=no
         });
