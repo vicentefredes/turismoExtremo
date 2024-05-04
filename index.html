@@ -23,20 +23,20 @@
                     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <li class="nav-item active" >
-              <a class="nav-link" href="#"> Inicio</a>
+            <li class="nav-item" >
+              <a class="nav-link" href="#home"> Inicio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#nosotros" id="segundoEnlace">¿Quienes Somos?</a>
+                <a class="nav-link" href="#nosotros">¿Quienes Somos?</a>
             </li>
             <li class="nav-item" >
-              <a class="nav-link" href="#servicios" id="tercerEnlace">Nuestros Servicios</a>
+              <a class="nav-link" href="#servicios">Nuestros Servicios</a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link" href="#tiempo" id="tercerEnlace">Consultar el Tiempo</a>
+                <a class="nav-link" href="#tiempo">Consultar el Tiempo</a>
               </li>
             <li class="nav-item">
-                <a class="nav-link" href="#contacto" id="cuartoEnlace">Contáctanos</a>
+                <a class="nav-link" href="#contacto">Contáctanos</a>
             </li>
           </ul> 
         </div>
@@ -53,13 +53,13 @@
                 </header>
             </article>
 
-            <article id="nosotros">
+            <article id="nosotros" class="panel">
                 <h1>¿Quiénes Somos?</h1>
                 <p>hola</p>
 
             </article>
 
-            <article id="servicios">
+            <article id="servicios" class="panel">
                 <header>
                     <h1 id="titulo">Nuestros Servicios</h1>
                     <p>¡En 'Turismo Extremo Sur' ofrecemos caminatas a estos 3 hermosos paisajes en la Región de Magallanes y la Antártica Chilena!</p>
@@ -108,17 +108,16 @@
                     </div>
                     
                 </section>
-
             </article>
 
-            <article id="tiempo">
+            <article id="tiempo" class="panel">
                 <h1>Consulta el Tiempo</h1>
                 <p>hola</p>
                 <button id="btnTiempo">Ver el tiempo</button>
 
             </article>
 
-            <article id="contacto">
+            <article id="contacto" class="panel">
                 <header>
                     <h2>Formulario de Contacto:</h2>
                 </header>
@@ -175,20 +174,28 @@
 
 
     <script>
-        // Ocultar todos los artículos excepto el primero por defecto
-        $('#main article:not(:first-of-type)').hide();
-    
-        // Función para mostrar el artículo correspondiente al enlace
-        $('nav a').click(function() {
-            // Obtener el ID del artículo correspondiente al enlace
-            var articleID = $(this).attr('href');
-    
-            // Ocultar todos los artículos
-            $('#main article').hide();
-    
-            // Mostrar el artículo correspondiente al enlace
-            $(articleID).show();
-        });
+
+        $(document).ready(function() {
+
+            // Función para mostrar el artículo correspondiente al fragmento de URL
+                function showArticleFromHash() {
+                    var hash = window.location.hash;
+                    if (hash) {
+                        $('.panel').hide(); // Oculta todos los artículos
+                        $(hash).show(); // Muestra el artículo correspondiente al fragmento de URL
+                    } else {
+                        // Si no hay fragmento en la URL (como en 'index.html'), mostrar el artículo de inicio
+                        $('#home').show();
+                    }
+                }
+
+                // Mostrar el artículo correspondiente al cargar la página
+                showArticleFromHash();
+
+                // Manejar el cambio de fragmento de URL
+                $(window).on('hashchange', function() {
+                    showArticleFromHash();
+                });
 
 
         // FORMULARIO DE CONTACTO
@@ -385,6 +392,7 @@
 				});
 
                 //http://api.weatherapi.com/v1/forecast.json?key=c8171437ad2f4d1e807175311240305&q=Punta%20Arenas&days=10&aqi=no&alerts=no
+        });
 
     </script>
 </body>
