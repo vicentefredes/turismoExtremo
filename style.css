@@ -2,6 +2,48 @@ body {
     background-color: rgb(255,244,201);
 }
 
+.navbar {
+    background-color: rgb(255,244,201);
+    align-items: center;
+}
+
+.navbar-brand {
+    margin-left: 2%;
+    margin-right: 5%;
+}
+
+.navbar .navbar-toggler {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border-color: rgb(56, 118, 29);
+    border-width: medium;
+    font-size: 20px;
+}
+
+.navbar-toggler-icon {
+    background-image: url(img/hambIcon.png);
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+    color: rgb(56, 118, 29);
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 1.5;
+    font-size: 20px;
+    text-align: center;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    background-color: rgb(56, 118, 29);
+    color: white; 
+    transition: background-color 0.3s ease; 
+    font-weight: bold;
+}
+
+.navbar .navbar-nav .nav-item :hover {
+    font-weight: bold;
+}
+
 .panel {
     display: none;
 }
@@ -16,6 +58,16 @@ header {
     text-align: center;
     width: 100%;
     color: rgb(56, 118, 29);
+    background-color: rgb(209, 166, 126);
+    border-top: 3px solid rgb(56, 118, 29);
+    border-bottom: 3px solid rgb(56, 118, 29);
+    margin-bottom: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+header h1 {
+    font-weight: bold;
 }
 
 section {
@@ -24,15 +76,79 @@ section {
 }
 
 #tituloInicio {
-    color: rgb(56, 118, 29);
     font-weight: 1000;
     font-size: 100px;
-    border-top: 2px solid rgb(56, 118, 29);
-    border-bottom: 2px solid rgb(56, 118, 29);
 }
 
-#fotoInicio {
-    width:100%
+#carouselInicio {
+    border: 3px solid rgb(56, 118, 29);
+}
+
+.carousel-control-prev-icon {
+    background-image: url(img/prev.png);
+    height: 10%;
+    width: 30%;
+    margin-left: -50%;
+}
+
+.carousel-control-next-icon {
+    background-image: url(img/next.png);
+    height: 10%;
+    width: 30%;
+    margin-right: -50%;
+}
+
+.container.introduccion {
+    border: 3px solid rgb(56, 118, 29);
+    background-color: rgb(150, 113, 78);  
+    width: 100%;
+}
+
+.container.introduccion h2 {
+    color: white;
+    text-align: center;
+    margin-top: 2%;
+}
+
+.container.introduccion p {
+    color: white;
+    text-align: justify;
+    font-size: 20px;
+}
+
+#fotoNosotros {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 3px solid rgb(56, 118, 29);
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.container.equipo {
+    text-align: center;
+    border: 3px solid rgb(56, 118, 29);
+    background-color: rgb(150, 113, 78);
+}
+
+.container.equipo h2 {
+    color: white;
+    margin-top: 2%;
+}
+
+.container.equipo .card {
+    border: 3px solid rgb(56, 118, 29);
+    margin-bottom: 5%;
+    color: rgb(28, 59, 14);
+    height: 98%;
+}
+
+.container.equipo .card img {
+    border-bottom: 3px solid rgb(56, 118, 29);
+}
+
+.container.equipo .card h3 {
+    font-size: 22px;
 }
 
 .card.servicio {
@@ -68,9 +184,26 @@ section {
     border-top: 3px solid rgb(56, 118, 29);
 }
 
+#seccionTiempo h3 {
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.table-responsive {
+    overflow: auto;
+}
+
 #tablaTiempo {
     text-align: center;
     font-weight: 600;
+    border: 3px solid rgb(56, 118, 29);
+    background-color: azure;
+}
+
+#tablaTiempo th {
+    border-bottom: 2px solid rgb(56, 118, 29);
+    background-color: rgb(132, 160, 160);
+    color: azure;
 }
 
 #tablaTiempo td {
@@ -84,4 +217,17 @@ section {
 
 .invalid-feedback {
     color: rgba(220, 53, 70, 0.741) !important;
+}
+
+#formContacto {
+    color: rgb(28, 59, 14);
+    font-weight: 500;
+}
+
+#btnEnviar {
+    background-color: rgb(28, 59, 14);
+    font-size: 25px;
+    font-weight: 600;
+    padding-left: 3%;
+    padding-right: 3%;
 }
