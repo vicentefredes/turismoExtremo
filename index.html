@@ -363,19 +363,19 @@
 
 
 
-                // Función para actualizar el enlace activo en el navbar
+            // Función para actualizar el enlace activo en el navbar
                 function actualizarEnlaceActivo() {
                     // Obtener el ID del artículo actual del URL
                     var articuloID = window.location.hash.substr(1);
 
-                    console.log(articuloID);
+                    console.log(articuloID); // Testeo de variable
 
                     // Quitar la clase 'active' de todos los enlaces de navegación
                     $('.navbar-nav .nav-item').removeClass('active');
 
                     // Si el ID del artículo está vacío o es 'home'
                     if (!articuloID || articuloID === 'home') {
-                        // Agregar la clase 'active' al enlace de navegación correspondiente a la página de inicio
+                        // Agregar la clase 'active' al enlace de navegación correspondiente a la página de inicio -- parent() hace que se dirija a nav-item
                         $('.navbar-nav .nav-link[href="#home"]').parent().addClass('active');
                     } else {
                         // Agregar la clase 'active' al enlace de navegación correspondiente al artículo actual
@@ -569,6 +569,7 @@
 
             // EL TIEMPO
 
+              // Array con días de la semana
                 var diasSemana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 
 				$.get("http://api.weatherapi.com/v1/forecast.json?key=c8171437ad2f4d1e807175311240305&q=Punta%20Arenas&days=10&aqi=no&alerts=no", function(data) { // Se obtiene la API
@@ -578,18 +579,20 @@
 
                         let fecha = new Date(item.date);
 
-                        let diaSemana = diasSemana[fecha.getDay()];
-                        let dia = fecha.getDate() + 1;
-                        let mes = fecha.toLocaleString('es', {month: 'long'})
-                        let mesCap = mes.charAt(0).toUpperCase() + mes.slice(1)
+                        let diaSemana = diasSemana[fecha.getDay()]; // getDay() nos devuelve el día de la semana en números del 0 al 6 - con ellos accedemos a los elementos correspondientes del array diasSemana
+                        let dia = fecha.getDate() + 1; // Obtenemos el día por separado
+                        let mes = fecha.toLocaleString('es', {month: 'long'}) // Obtenemos el mes, en español
+                        let mesCap = mes.charAt(0).toUpperCase() + mes.slice(1) // Permite tener el mes capitalizado
                         let anio = fecha.getFullYear();
 
+                      // Testeo de variables
 						console.log(item.date);
                         console.log(diaSemana + " " + dia  + " de " + mesCap + " de " + anio);
                         console.log(item.day.mintemp_c);
                         console.log(item.day.maxtemp_c);
                         console.log('');
 
+                      // Creación y poblamiento de filas
                         let filaHTML = '<tr>';
                         filaHTML += '<td>' + diaSemana + ', ' + dia + ' de ' + mesCap + ' de ' + anio + '</td>';
                         filaHTML += `<td> <img src="${icono}" alt="condicion"> </td>`;
