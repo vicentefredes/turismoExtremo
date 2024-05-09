@@ -258,28 +258,28 @@
                 <section id="seccionTiempo">
                     <h3>El tiempo a 10 días en Punta Arenas, Región de Magallanes y la Antártica Chilena, Chile:</h3>
 
-                    <div class="table-responsive">
-                        <table class="table" id="tablaTiempo">
-                            <thead>
-                                <tr>
-                                    <th>Fecha</th>
-                                    <th>Condición</th>
-                                    <th>Temp. mín. (°C)</th>
-                                    <th>Temp. máx. (°C)</th>
-                                    <th>Lluvia</th>
-                                    <th>Viento</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Aquí van los datos de la tabla -->
-                            </tbody>
-                        </table>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10 col-md-12">
+                            <div class="table-responsive">
+                                <table class="table" id="tablaTiempo">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha</th>
+                                            <th>Condición</th>
+                                            <th>Mín. (°C)</th>
+                                            <th>Máx. (°C)</th>
+                                            <th>Lluvia</th>
+                                            <th>Viento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Aquí van los datos de la tabla -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-
-                    
-
                 </section>
-
             </article>
 
             <article id="contacto" class="panel">
@@ -356,13 +356,6 @@
                 // Mostrar el artículo correspondiente al cargar la página
                 showArticleFromHash();
 
-                // Manejar el cambio de fragmento de URL
-                $(window).on('hashchange', function() {
-                    showArticleFromHash();
-                });
-
-
-
             // Función para actualizar el enlace activo en el navbar
                 function actualizarEnlaceActivo() {
                     // Obtener el ID del artículo actual del URL
@@ -386,10 +379,10 @@
                 // Llamar a la función de actualización del enlace activo cuando la página se carga por primera vez
                 actualizarEnlaceActivo();
 
-                // Detectar eventos de clic en los enlaces del navbar
-                $('.navbar-nav .nav-link').click(function() {
-                    // Esperar un breve momento para que la página se desplace al artículo antes de actualizar el enlace activo
-                    setTimeout(actualizarEnlaceActivo, 100);
+                // Manejar el cambio de fragmento de URL
+                $(window).on('hashchange', function() {
+                    showArticleFromHash();
+                    actualizarEnlaceActivo();
                 });
 
 
